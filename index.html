@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href='css/style.css' rel='stylesheet'>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class='container'>
+        <div class="jumbotron">
+            <h1>Welcome to Postcard Creations!</h1>
+            <p>A place to create wonderful customized postcards using your very own images and text! We even provide a variety of customizable filters, fonts, and image effects that can be added.</p>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                <span class="sr-only">40% Complete (success)</span>
+            </div>
+        </div>
+
+        <form class='form-inline col-md-offset-1'>
+            <div class='form-group col-md-2'>
+                <span class='btn btn-default btn-file'>
+                    Browse for Image<input type="file" id="upload" name="upload" accept="image/*">
+                </span>
+            </div>
+
+            <div class='form-group col-md-2'>
+                <select id='sizeSelect' class='form-control'>
+                    <option value='1'>540x360</option>
+                    <option value='2'>546x390</option>                           
+                    <option value='3'>640x480</option>                            
+                    <option value='4'>960x768</option>
+                    <option value='5'>980x770</option>                            
+                    <option value='6'>1050x750</option>
+                </select>
+            </div>
+        </form>
+
+        <div class='form-group col-md-2'>
+            <select id='filterSelect' class='form-control'>
+                <option value='original'>Original</option>
+                <option value='custom'>Custom Filter</option>
+                <option value='1977'>1977</option>
+                <option value='Amaro'>Amaro</option>                           
+                <option value='Brannan'>Brannan</option>                            
+                <option value='Earlybird'>Earlybird</option> 
+                <option value='Grayscale'>Grayscale</option>                          
+                <option value='Hefe'>Hefe</option>
+                <option value='Hudson'>Hudson</option>                            
+                <option value='Inkwell'>Inkwell</option>
+                <option value='Kelvin'>Kelvin</option>
+                <option value='LoFi'>LoFi</option>
+                <option value='Mayfair'>Mayfair</option>
+                <option value='NashVille'>NashVille</option>
+                <option value='Nostalgia'>Nostalgia</option>
+                <option value='Rise'>Rise</option>
+                <option value='Sierra'>Sierra</option>
+                <option value='Sutro'>Sutro</option>
+                <option value='Toaster'>Toaster</option>
+                <option value='Valencia'>Valencia</option>
+                <option value='Walden'>Walden</option>
+                <option value='Willow'>Willow</option>
+                <option value='XPro2'>XPro2</option>
+            </select>
+        </div>
+
+        <div class='row col-md-12'>
+            <div id='image-container'>
+                <img id='image' name="image" src="/" width="100%" height='100%'>
+                <h3 id='image-title'>Hello</h3>
+                <p id='image-text'></p>
+            </div>
+        </div>
+        
+        <div class="property-container">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="blur">Blur</label>
+                        <input type="range" id="blur" name="blur" oninput="setBlur(this.valueAsNumber * .025);" value = "0" step="1" min="0" max="200">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="brightness">Brightness</label>
+                        <input type="range" id="brightness" name="brightness" oninput="setBrightness((this.valueAsNumber)/100);" value="100" step="1" min="0" max="200">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="contrast">Contrast</label>
+                        <input type="range" id="contrast" name="contrast" oninput="setContrast(this.valueAsNumber);" value="100" step="1" min="0" max="200">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="grayscale">GrayScale</label>
+                        <input type="range" id="grayscale" name="grayscale" oninput="setGrayScale(this.valueAsNumber)" value = "0" step="1" min="0" max="100">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="hue">Hue</label>
+                        <input type="range" id="hue" name="hue" oninput="setHue(this.valueAsNumber)" value = "0" step="1" min="0" max="360">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="invert">Invert</label>
+                        <input type="range" id="invert" name="invert" oninput="setInvert(this.valueAsNumber)" value = "0" step="1" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="opacity">Opacity</label>
+                        <input type="range" id="opacity" name="opacity" oninput="setOpacity(this.valueAsNumber);" value="100" step="1" min="0" max="100">
+                    </div>                            
+                    <div class="col-md-4">
+                        <label for="saturate">Saturate</label>
+                        <input type="range" id="saturate" name="saturate" oninput="setSaturate(this.valueAsNumber);" value="0" step="1" min="0" max="200">
+                    </div>                            
+                    <div class="col-md-4">
+                        <label for="sepia">Sepia</label>
+                        <input type="range" id="sepia" name="sepia" oninput="setSepia(this.valueAsNumber);" value="0" step="1" min="0" max="100">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src='js/utility.js'></script>
+    <script src='js/functions.js'></script>
+    <script src='js/custom_filters.js'></script>
+</body>
+</html>

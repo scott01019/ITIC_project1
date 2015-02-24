@@ -1,0 +1,79 @@
+body {
+	background-color: #E3E2D8;
+	color: #7D6D8C;
+}
+
+.progress-bar-success {
+	background-color: #D2E6C3;
+}
+
+.nav-tabs {
+	background-color: #E3E2D8;
+}
+
+.tab-content {
+	background-color: #D8BFD8;
+}
+
+.tabbable {
+	background-color: #D8BFD8;
+}
+
+a {
+	color: black;
+}
+
+.jumbotron {
+	background-color: #E6C7BA;
+	margin-top: 35px;
+}
+
+#image-container {
+	position: relative;
+	width: 546px;
+	height: 390px;
+	margin: 50px auto;
+}
+
+#image-title {
+	position: absolute;
+	top: 200px;
+	left: 0;
+	width: 100%;
+}
+
+#image-text {
+	position: absolute;
+	top: 300px;
+	left: 0;
+	width: 100%;
+}
+
+#upload {
+	padding-bottom: 30px;
+	padding-top: 20px;
+}
+
+.tab-pane {
+	overflow: hidden;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
