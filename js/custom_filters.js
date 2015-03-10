@@ -8,8 +8,7 @@ function setBlur(value)
     var filter = 'blur(' + currentBlur + 'px)' + 'brightness(' + currentBrightness + ')' + 'contrast(' + currentContrast + '%)' 
                     + 'grayscale(' + currentGrayScale + '%)' + 'hue-rotate(' + currentHue + 'deg)' + 'invert(' + currentInvert + '%)'
                     + 'opacity(' + currentOpacity + '%)' + 'saturate(' + currentSaturate + '%)' + 'sepia(' + currentSepia + '%)';
-    canvasImg.style.filter = filter;
-    canvasImg.style.webkitFilter = filter;
+    setFilter(filter);
 };
 
 //  Purpose: Set the current value of constrast.
@@ -22,8 +21,7 @@ function setContrast(value)
     var filter = 'blur(' + currentBlur + 'px)' + 'brightness(' + currentBrightness + ')' + 'contrast(' + currentContrast + '%)' 
                     + 'grayscale(' + currentGrayScale + '%)' + 'hue-rotate(' + currentHue + 'deg)' + 'invert(' + currentInvert + '%)'
                     + 'opacity(' + currentOpacity + '%)' + 'saturate(' + currentSaturate + '%)' + 'sepia(' + currentSepia + '%)';
-    canvasImg.style.filter = filter;
-    canvasImg.style.webkitFilter = filter;
+    setFilter(filter);
 };
 
 //  Purpose: Set the current value of brightness.
@@ -36,8 +34,7 @@ function setBrightness(value)
     var filter = 'blur(' + currentBlur + 'px)' + 'brightness(' + currentBrightness + ')' + 'contrast(' + currentContrast + '%)' 
                     + 'grayscale(' + currentGrayScale + '%)' + 'hue-rotate(' + currentHue + 'deg)' + 'invert(' + currentInvert + '%)'
                     + 'opacity(' + currentOpacity + '%)' + 'saturate(' + currentSaturate + '%)' + 'sepia(' + currentSepia + '%)';
-    canvasImg.style.filter = filter;
-    canvasImg.style.webkitFilter = filter;
+    setFilter(filter);
 };
 
 //  Purpose: Set the current value of gray-scale.
@@ -50,8 +47,7 @@ function setGrayScale(value)
     var filter = 'blur(' + currentBlur + 'px)' + 'brightness(' + currentBrightness + ')' + 'contrast(' + currentContrast + '%)' 
                     + 'grayscale(' + currentGrayScale + '%)' + 'hue-rotate(' + currentHue + 'deg)' + 'invert(' + currentInvert + '%)'
                     + 'opacity(' + currentOpacity + '%)' + 'saturate(' + currentSaturate + '%)' + 'sepia(' + currentSepia + '%)';
-    canvasImg.style.filter = filter;
-    canvasImg.style.webkitFilter = filter;
+    setFilter(filter);
 };
 
 //  Purpose: Set the current value of hue.
@@ -64,8 +60,7 @@ function setHue(value)
     var filter = 'blur(' + currentBlur + 'px)' + 'brightness(' + currentBrightness + ')' + 'contrast(' + currentContrast + '%)' 
                     + 'grayscale(' + currentGrayScale + '%)' + 'hue-rotate(' + currentHue + 'deg)' + 'invert(' + currentInvert + '%)'
                     + 'opacity(' + currentOpacity + '%)' + 'saturate(' + currentSaturate + '%)' + 'sepia(' + currentSepia + '%)';
-    canvasImg.style.filter = filter;
-    canvasImg.style.webkitFilter = filter;
+    setFilter(filter);
 }
 
 //  Purpose: Set the current value of invert.
@@ -78,8 +73,7 @@ function setInvert(value)
     var filter = 'blur(' + currentBlur + 'px)' + 'brightness(' + currentBrightness + ')' + 'contrast(' + currentContrast + '%)' 
                     + 'grayscale(' + currentGrayScale + '%)' + 'hue-rotate(' + currentHue + 'deg)' + 'invert(' + currentInvert + '%)'
                     + 'opacity(' + currentOpacity + '%)' + 'saturate(' + currentSaturate + '%)' + 'sepia(' + currentSepia + '%)';
-    canvasImg.style.filter = filter;
-    canvasImg.style.webkitFilter = filter;
+    setFilter(filter);
 }
 
 //  Purpose: Set the current value of opacity.
@@ -92,8 +86,7 @@ function setOpacity(value)
     var filter = 'blur(' + currentBlur + 'px)' + 'brightness(' + currentBrightness + ')' + 'contrast(' + currentContrast + '%)' 
                     + 'grayscale(' + currentGrayScale + '%)' + 'hue-rotate(' + currentHue + 'deg)' + 'invert(' + currentInvert + '%)'
                     + 'opacity(' + currentOpacity + '%)' + 'saturate(' + currentSaturate + '%)' + 'sepia(' + currentSepia + '%)';
-    canvasImg.style.filter = filter;
-    canvasImg.style.webkitFilter = filter;
+    setFilter(filter);
 }
 
 //  Purpose: Set the current value of saturate.
@@ -106,8 +99,7 @@ function setSaturate(value)
     var filter = 'blur(' + currentBlur + 'px)' + 'brightness(' + currentBrightness + ')' + 'contrast(' + currentContrast + '%)' 
                     + 'grayscale(' + currentGrayScale + '%)' + 'hue-rotate(' + currentHue + 'deg)' + 'invert(' + currentInvert + '%)'
                     + 'opacity(' + currentOpacity + '%)' + 'saturate(' + currentSaturate + '%)' + 'sepia(' + currentSepia + '%)';
-    canvasImg.style.filter = filter;
-    canvasImg.style.webkitFilter = filter;
+    setFilter(filter);
 }
 
 //  Purpose: Set the current value of sepia.
@@ -120,6 +112,5 @@ function setSepia(value)
     var filter = 'blur(' + currentBlur + 'px)' + 'brightness(' + currentBrightness + ')' + 'contrast(' + currentContrast + '%)' 
                     + 'grayscale(' + currentGrayScale + '%)' + 'hue-rotate(' + currentHue + 'deg)' + 'invert(' + currentInvert + '%)'
                     + 'opacity(' + currentOpacity + '%)' + 'saturate(' + currentSaturate + '%)' + 'sepia(' + currentSepia + '%)';
-    canvasImg.style.filter = filter;
-    canvasImg.style.webkitFilter = filter;
+    setFilter(filter);
 };
