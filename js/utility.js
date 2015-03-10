@@ -51,7 +51,7 @@ $(document).ready(function() {
 			cardTitle.x -= 1;
 			updateTitle();
 		}, 15);
-	}).bind('mouseup', function() {
+	}).bind('mouseup mouseleave', function() {
 		clearTimeout(timeoutId);
 	});
 
@@ -63,7 +63,7 @@ $(document).ready(function() {
 			cardTitle.x += 1;
 			updateTitle();
 		}, 15);
-	}).bind('mouseup', function() {
+	}).bind('mouseup mouseleave', function() {
 		clearTimeout(timeoutId);
 	});
 
@@ -75,7 +75,7 @@ $(document).ready(function() {
 			cardTitle.y += 1;
 			updateTitle();
 		}, 15);
-	}).bind('mouseup', function() {
+	}).bind('mouseup mouseleave', function() {
 		clearTimeout(timeoutId);
 	});
 
@@ -87,7 +87,7 @@ $(document).ready(function() {
 			cardTitle.y -= 1;
 			updateTitle();
 		}, 15);
-	}).bind('mouseup', function() {
+	}).bind('mouseup mouseleave', function() {
 		clearTimeout(timeoutId);
 	});
 
@@ -119,7 +119,7 @@ $(document).ready(function() {
 			cardText.x -= 1;
 			updateText();
 		}, 15);
-	}).bind('mouseup', function() {
+	}).bind('mouseup mouseleave', function() {
 		clearTimeout(timeoutId);
 	});
 
@@ -131,7 +131,7 @@ $(document).ready(function() {
 			cardText.x += 1;
 			updateText();
 		}, 15);
-	}).bind('mouseup', function() {
+	}).bind('mouseup mouseleave', function() {
 		clearTimeout(timeoutId);
 	});
 
@@ -143,7 +143,7 @@ $(document).ready(function() {
 			cardText.y += 1;
 			updateText();
 		}, 15);
-	}).bind('mouseup', function() {
+	}).bind('mouseup mouseleave', function() {
 		clearTimeout(timeoutId);
 	});
 
@@ -155,7 +155,7 @@ $(document).ready(function() {
 			cardText.y -= 1;
 			updateText();
 		}, 15);
-	}).bind('mouseup', function() {
+	}).bind('mouseup mouseleave', function() {
 		clearTimeout(timeoutId);
 	});
 
