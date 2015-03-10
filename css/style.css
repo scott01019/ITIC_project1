@@ -1,52 +1,45 @@
-body {
-	background-color: #E3E2D8;
-	color: #7D6D8C;
+html, body {
+	font-family: Open Sans, Helvetica, Arial;
+	background-color: #EBF4FA;
+	color: #206BA4;
+	height: 100%;
+	padding: 0;
 }
 
-.progress-bar-success {
-	background-color: #D2E6C3;
+h1 {
+	font-family: Lobster;
 }
 
-.nav-tabs {
-	background-color: #E3E2D8;
+.canvas-container {
+	margin: 25px auto 45px auto;
+	width: 540px;
+	height: 360px;
+	padding: 0;
+	position: relative;
 }
 
-.tab-content {
-	background-color: #D8BFD8;
+canvas {
+    border: 1px solid #333;
+    width: 540px;
+    height: 360px;
 }
 
-.tabbable {
-	background-color: #D8BFD8;
+.container {
+	height: 100%;
 }
 
-a {
-	color: black;
+.fill {
+	width: 100%;
+	height: 100%;
+	min-height: 1500px;
+	background-color: #BBD9EE;
+	padding: 10px;
 }
 
 .jumbotron {
 	background-color: #E6C7BA;
+	border: 4px dotted #EBF4FA;
 	margin-top: 35px;
-}
-
-#image-container {
-	position: relative;
-	width: 546px;
-	height: 390px;
-	margin: 50px auto;
-}
-
-#image-title {
-	position: absolute;
-	top: 200px;
-	left: 0;
-	width: 100%;
-}
-
-#image-text {
-	position: absolute;
-	top: 300px;
-	left: 0;
-	width: 100%;
 }
 
 #upload {
@@ -76,4 +69,31 @@ a {
     background: white;
     cursor: inherit;
     display: block;
+}
+
+.color {
+	margin-top: 5px;
+	margin-left: 25px;
+}
+
+.canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#canvas-layer-img {
+	z-index: 0;
+}
+
+#canvas-layer-text {
+	z-index: 2;
+}
+
+#canvas-layer-title {
+	z-index: 2;
+}
+
+.glyph {
+	margin-top: 7px;
 }

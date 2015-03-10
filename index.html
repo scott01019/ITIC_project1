@@ -19,25 +19,14 @@
 </head>
 <body>
     <div class='container'>
+        <div class='fill'>
         <div class="jumbotron">
             <h1>Welcome to Postcard Creations!</h1>
-            <p>A place to create wonderful customized postcards using your very own images and text! We even provide a variety of customizable filters, fonts, and image effects that can be added.</p>
+            <p>A place to create wonderful customized postcards using your very own images and text!</p>
         </div>
 
-        <div class="progress">
-            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                <span class="sr-only">40% Complete (success)</span>
-            </div>
-        </div>
-
-        <form class='form-inline col-md-offset-1'>
-            <div class='form-group col-md-2'>
-                <span class='btn btn-default btn-file'>
-                    Browse for Image<input type="file" id="upload" name="upload" accept="image/*">
-                </span>
-            </div>
-
-            <div class='form-group col-md-2'>
+        <div class='row'>
+            <div class='form-group col-md-2 col-md-offset-3'>
                 <select id='sizeSelect' class='form-control'>
                     <option value='1'>540x360</option>
                     <option value='2'>546x390</option>                           
@@ -47,44 +36,198 @@
                     <option value='6'>1050x750</option>
                 </select>
             </div>
-        </form>
 
-        <div class='form-group col-md-2'>
-            <select id='filterSelect' class='form-control'>
-                <option value='original'>Original</option>
-                <option value='custom'>Custom Filter</option>
-                <option value='1977'>1977</option>
-                <option value='Amaro'>Amaro</option>                           
-                <option value='Brannan'>Brannan</option>                            
-                <option value='Earlybird'>Earlybird</option> 
-                <option value='Grayscale'>Grayscale</option>                          
-                <option value='Hefe'>Hefe</option>
-                <option value='Hudson'>Hudson</option>                            
-                <option value='Inkwell'>Inkwell</option>
-                <option value='Kelvin'>Kelvin</option>
-                <option value='LoFi'>LoFi</option>
-                <option value='Mayfair'>Mayfair</option>
-                <option value='NashVille'>NashVille</option>
-                <option value='Nostalgia'>Nostalgia</option>
-                <option value='Rise'>Rise</option>
-                <option value='Sierra'>Sierra</option>
-                <option value='Sutro'>Sutro</option>
-                <option value='Toaster'>Toaster</option>
-                <option value='Valencia'>Valencia</option>
-                <option value='Walden'>Walden</option>
-                <option value='Willow'>Willow</option>
-                <option value='XPro2'>XPro2</option>
-            </select>
-        </div>
+            <div class='form-group col-md-2'>
+                <span class='btn btn-default btn-file'>
+                    Browse for Image<input type="file" id="upload" name="upload" accept="image/*">
+                </span>
+            </div>
 
-        <div class='row col-md-12'>
-            <div id='image-container'>
-                <img id='image' name="image" src="/" width="100%" height='100%'>
-                <h3 id='image-title'>Hello</h3>
-                <p id='image-text'></p>
+            <div class='form-group col-md-2'>
+                <select id='filterSelect' class='form-control'>
+                    <option value='original'>No Filter</option>
+                    <option value='custom'>Custom Filter</option>
+                    <option value='1977'>1977</option>
+                    <option value='Amaro'>Amaro</option>                           
+                    <option value='Brannan'>Brannan</option>                            
+                    <option value='Earlybird'>Earlybird</option> 
+                    <option value='Grayscale'>Grayscale</option>                          
+                    <option value='Hefe'>Hefe</option>
+                    <option value='Hudson'>Hudson</option>                            
+                    <option value='Inkwell'>Inkwell</option>
+                    <option value='Kelvin'>Kelvin</option>
+                    <option value='LoFi'>LoFi</option>
+                    <option value='Mayfair'>Mayfair</option>
+                    <option value='NashVille'>NashVille</option>
+                    <option value='Nostalgia'>Nostalgia</option>
+                    <option value='Rise'>Rise</option>
+                    <option value='Sierra'>Sierra</option>
+                    <option value='Sutro'>Sutro</option>
+                    <option value='Toaster'>Toaster</option>
+                    <option value='Valencia'>Valencia</option>
+                    <option value='Walden'>Walden</option>
+                    <option value='Willow'>Willow</option>
+                    <option value='XPro2'>XPro2</option>
+                </select>
             </div>
         </div>
-        
+
+        <div class='col-md-12'>
+            <div class='canvas-container'>
+                <canvas id='canvas-layer-img' class='canvas'></canvas>
+                <canvas id='canvas-layer-text' class='canvas'></canvas>
+                <canvas id='canvas-layer-title' class='canvas'>Please Upload an Image</canvas>
+            </div>
+        </div>
+
+        <br>
+
+        <div class='row'>
+            <div class='form-group col-md-5'>
+                <label for="title" class="control-label col-xs-1">Title</label>
+                <div class="col-xs-11">
+                    <input type="text" class="form-control" id="title" name="title" maxlength="20" size="20" value="" required placeholder="Title" autofocus>
+                </div>
+            </div>
+
+            <div class='form-group col-md-2'>
+                <select id='title-font' class='form-control'>
+                    <option>Helvetica</option>
+                    <option>Arial</option>
+                    <option>Droid Sans</option>
+                    <option>Droid Serif</option>
+                    <option>Lobster</option>
+                    <option>Roboto</option>
+                    <option>Open Sans</option>
+                    <option>Dancing Script</option>
+                    <option>Kaushan Script</option>
+                    <option>Playball</option>
+                    <option>Marck Script</option>
+                    <option>Allura</option>
+                    <option>Knewave</option>
+                    <option>Seaweed Script</option>
+                    <option>Sarina</option>
+                    <option>Ruthie</option>
+                </select>
+            </div>
+
+            <div class='form-group col-md-2'>
+                <select id='title-font-size' class='form-control'>
+                    <option>8px</option>
+                    <option>9px</option>
+                    <option>10px</option>
+                    <option>11px</option>
+                    <option>12px</option>
+                    <option>14px</option>
+                    <option>16px</option>
+                    <option>18px</option>
+                    <option>20px</option>
+                    <option>22px</option>
+                    <option>24px</option>
+                    <option>26px</option>
+                    <option>28px</option>
+                    <option>36px</option>
+                    <option>48px</option>
+                    <option>72px</option>
+                </select>
+            </div>
+
+            <div class='form-group col-md-1'>
+                <input type="color" id='title-color' class='color' name="favcolor" value="#ff0000">
+            </div>
+
+            <div class='form-group col-md-2'>
+                <div class='col-xs-3 glyph'>
+                    <span id='title-left' class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                </div>
+
+                <div class='col-xs-3 glyph'>
+                    <span id='title-up' class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+                </div>
+
+                <div class='col-xs-3 glyph'>
+                    <span id='title-right' class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+                </div>
+
+                <div class='col-xs-3 glyph'>
+                    <span id='title-down' class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class='row'>
+            <div class='form-group col-md-5'>
+                <label for="text" class="control-label col-xs-1">Text</label>
+                <div class="col-xs-11">
+                    <textarea class="form-control" id="text" name="text" maxlength="140" placeholder="140 characters" style='resize: none'></textarea>
+                </div>
+            </div>
+
+            <div class='form-group col-md-2'>
+                <select id='text-font' class='form-control'>
+                    <option>Helvetica</option>
+                    <option>Arial</option>
+                    <option>Droid Sans</option>
+                    <option>Droid Serif</option>
+                    <option>Lobster</option>
+                    <option>Roboto</option>
+                    <option>Open Sans</option>
+                    <option>Dancing Script</option>
+                    <option>Kaushan Script</option>
+                    <option>Playball</option>
+                    <option>Marck Script</option>
+                    <option>Allura</option>
+                    <option>Knewave</option>
+                    <option>Seaweed Script</option>
+                    <option>Sarina</option>
+                    <option>Ruthie</option>
+                </select>
+            </div>
+
+            <div class='form-group col-md-2'>
+                <select id='text-font-size' class='form-control'>
+                    <option>8px</option>
+                    <option>9px</option>
+                    <option>10px</option>
+                    <option>11px</option>
+                    <option>12px</option>
+                    <option>14px</option>
+                    <option>16px</option>
+                    <option>18px</option>
+                    <option>20px</option>
+                    <option>22px</option>
+                    <option>24px</option>
+                    <option>26px</option>
+                    <option>28px</option>
+                    <option>36px</option>
+                    <option>48px</option>
+                    <option>72px</option>
+                </select>
+            </div>
+
+            <div class='form-group col-md-1'>
+                <input type="color" id='text-color' class='color' name="favcolor" value="#ff0000">
+            </div>
+
+            <div class='form-group col-md-2'>
+                <div class='col-xs-3 glyph'>
+                    <span id='text-left' class="glyphicon glyphicon-triangle-left" aria-hidden="true"></span>
+                </div>
+
+                <div class='col-xs-3 glyph'>
+                    <span id='text-up' class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+                </div>
+
+                <div class='col-xs-3 glyph'>
+                    <span id='text-right' class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span>
+                </div>
+
+                <div class='col-xs-3 glyph'>
+                    <span id='text-down' class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
+                </div>
+            </div>
+        </div>
+
         <div class="property-container">
             <div class="form-group">
                 <div class="row">
@@ -137,13 +280,27 @@
                 </div>
             </div>
         </div>
+    </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    <!-- To use WebFont Webkit -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js"></script>
+    <script>
+        WebFont.load({
+           google: {
+             families: ['Droid Sans', 'Droid Serif', 'Lobster', 'Roboto', 'Open Sans', 'Dancing Script', 'Kaushan Script', 'Playball',
+                        'Marck Script', 'Allura', 'Knewave', 'Kristi', 'Seaweed Script', 'Sarina', 'Ruthie' ]
+           }
+         });
+    </script>
+
+    <script src='js/globals.js'></script>
     <script src='js/utility.js'></script>
-    <script src='js/functions.js'></script>
     <script src='js/custom_filters.js'></script>
+    <script src='js/filters.js'></script>
 </body>
 </html>

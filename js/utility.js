@@ -1,52 +1,214 @@
 $(document).ready(function() {
-	$('a').click(function() {
-		event.preventDefault();
-		switch($(this).parent().attr('id')) 
+
+	//	Purpose: Loads uploaded image file to canvas. 
+	//	PreCondition: User has uploaded a new image file.
+	//	PostCondiiton: Image file will be drawn to canvas.
+	$('#upload').change(function(e) {
+		var reader = new FileReader();
+		reader.onload = function(event)
 		{
-			case 'step1': $('.progress-bar').css('width', '0%');
-			break;
-			case 'step2': $('.progress-bar').css('width', '20%');
-			break;
-			case 'step3': $('.progress-bar').css('width', '40%');
-			break;
-			case 'step4': $('.progress-bar').css('width', '60%');
-			break;
-			case 'step5': $('.progress-bar').css('width', '80%');
-			break;
-			case 'step6': $('.progress-bar').css('width', '100%');
-			break;
+		    var img = new Image();
+		    img.onload = function()
+		    {
+		        canvasImg.width = img.width;
+		        canvasImg.height = img.height;
+		        setCanvasResolution();
+		        ctxImg.drawImage(img, 0, 0);
+		    }
+		    img.src = event.target.result;
 		}
+		reader.readAsDataURL(e.target.files[0]);   
 	});
 
+	//	Purpose: Redraw title when user updates title input.
+	//	PreCondition: User changes title input.
+	//	PostCondition: Title will be updated on title canvas.
+	$('#title').on('change', updateTitle);
+
+	//	Purpose: Redraw title when user updates title font size.
+	//	PreCondition: User changes title font-size input.
+	//	PostCondition: Title will be updated on title canvas.
+	$('#title-font-size').on('change', updateTitle);
+
+	//	Purpose: Redraw title when user updates title font.
+	//	PreCondition: User changes title font input.
+	//	PostCondition: Title will be updated on title canvas.
+	$('#title-font').on('change', updateTitle);
+
+	//	Purpose: Redraw title when user updates title color.
+	//	PreCondition: User changes title color input.
+	//	PostCondition: Title will be updated on title canvas.
+	$('#title-color').on('change', updateTitle);
+
+	//	A variable to hold timeout for user input.
+	var timeoutId = 0;
+
+	//	Purpose: Moves title to the left when title-left glyphicon is clicked.
+	//	PreCondition: Title-left glyphicon is clicked.
+	//	PostCondition: Title will move to the left by 1 pixel per 15ms on mousedown. 
+	$('#title-left').mousedown(function() {
+		timeoutId = setInterval(function() {
+			cardTitle.x -= 1;
+			updateTitle();
+		}, 15);
+	}).bind('mouseup', function() {
+		clearTimeout(timeoutId);
+	});
+
+	//	Purpose: Moves title to the right when title-right glyphicon is clicked.
+	//	PreCondition: Title-right glyphicon is clicked.
+	//	PostCondition: Title will move to the right by 1 pixel per 15ms on mousedown. 
+	$('#title-right').mousedown(function() {
+		timeoutId = setInterval(function() {
+			cardTitle.x += 1;
+			updateTitle();
+		}, 15);
+	}).bind('mouseup', function() {
+		clearTimeout(timeoutId);
+	});
+
+	//	Purpose: Moves title down when title-down glyphicon is clicked.
+	//	PreCondition: Title-down glyphicon is clicked.
+	//	PostCondition: Title will move down by 1 pixel per 15ms on mousedown. 
+	$('#title-down').mousedown(function() {
+		timeoutId = setInterval(function() {
+			cardTitle.y += 1;
+			updateTitle();
+		}, 15);
+	}).bind('mouseup', function() {
+		clearTimeout(timeoutId);
+	});
+
+	//	Purpose: Moves title up when title-up glyphicon is clicked.
+	//	PreCondition: Title-up glyphicon is clicked.
+	//	PostCondition: Title will move up by 1 pixel per 15ms on mousedown. 
+	$('#title-up').mousedown(function() {
+		timeoutId = setInterval(function() {
+			cardTitle.y -= 1;
+			updateTitle();
+		}, 15);
+	}).bind('mouseup', function() {
+		clearTimeout(timeoutId);
+	});
+
+	//	Purpose: Redraw text when user updates text input.
+	//	PreCondition: User changes text input.
+	//	PostCondition: text will be updated on text canvas.
+	$('#text').on('change', updateText);
+
+	//	Purpose: Redraw text when user updates text font-size.
+	//	PreCondition: User changes font-size input.
+	//	PostCondition: text will be updated on text canvas.
+	$('#text-font-size').on('change', updateText);
+
+	//	Purpose: Redraw text when user updates text font.
+	//	PreCondition: User changes font input.
+	//	PostCondition: text will be updated on text canvas.
+	$('#text-font').on('change', updateText);
+
+	//	Purpose: Redraw text when user updates text color.
+	//	PreCondition: User changes color input.
+	//	PostCondition: text will be updated on text canvas.
+	$('#text-color').on('change', updateText);
+
+	//	Purpose: Moves text to the left when text-left glyphicon is clicked.
+	//	PreCondition: Text-left glyphicon is clicked.
+	//	PostCondition: Text will move to the left by 1 pixel per 15ms on mousedown. 
+	$('#text-left').mousedown(function() {
+		timeoutId = setInterval(function() {
+			cardText.x -= 1;
+			updateText();
+		}, 15);
+	}).bind('mouseup', function() {
+		clearTimeout(timeoutId);
+	});
+
+	//	Purpose: Moves text to the right when text-right glyphicon is clicked.
+	//	PreCondition: Text-right glyphicon is clicked.
+	//	PostCondition: Text will move to the right by 1 pixel per 15ms on mousedown. 
+	$('#text-right').mousedown(function() {
+		timeoutId = setInterval(function() {
+			cardText.x += 1;
+			updateText();
+		}, 15);
+	}).bind('mouseup', function() {
+		clearTimeout(timeoutId);
+	});
+
+	//	Purpose: Moves text down when text-down glyphicon is clicked.
+	//	PreCondition: Text-down glyphicon is clicked.
+	//	PostCondition: Text will move down by 1 pixel per 15ms on mousedown. 
+	$('#text-down').mousedown(function() {
+		timeoutId = setInterval(function() {
+			cardText.y += 1;
+			updateText();
+		}, 15);
+	}).bind('mouseup', function() {
+		clearTimeout(timeoutId);
+	});
+
+	//	Purpose: Moves text up when text-up glyphicon is clicked.
+	//	PreCondition: Text-up glyphicon is clicked.
+	//	PostCondition: Text will move up by 1 pixel per 15ms on mousedown. 
+	$('#text-up').mousedown(function() {
+		timeoutId = setInterval(function() {
+			cardText.y -= 1;
+			updateText();
+		}, 15);
+	}).bind('mouseup', function() {
+		clearTimeout(timeoutId);
+	});
+
+	//	Purpose: Adjusts canvas resolutions and sizes. 
+	//	PreCondition: A new size is selected by the user. 
+	//	PostCondition: Canvas' will be adjusted to specified size and resolution.
 	$('#sizeSelect').change(function() {
+		setCanvasResolution();
 		switch($('#sizeSelect option:selected').val()) {
 			case '1':
-				$('#image-container').css('width', '540px');				
-				$('#image-container').css('height', '360px');
+				$('canvas').css('width', '540px');				
+				$('canvas').css('height', '360px');
+				$('.canvas-container').css('width', '540px');
+				$('.canvas-container').css('height', '360px');
 			break;
 			case '2':
-				$('#image-container').css('width', '546px');				
-				$('#image-container').css('height', '390px');
+				$('canvas').css('width', '546px');				
+				$('canvas').css('height', '390px');
+				$('.canvas-container').css('width', '540px');
+				$('.canvas-container').css('height', '390px');
 			break;			
 			case '3':
-				$('#image-container').css('width', '640px');				
-				$('#image-container').css('height', '480px');
+				$('canvas').css('width', '640px');				
+				$('canvas').css('height', '480px');
+				$('.canvas-container').css('width', '650px');
+				$('.canvas-container').css('height', '480px');
 			break;
 			case '4':
-				$('#image-container').css('width', '960px');				
-				$('#image-container').css('height', '768px');
+				$('canvas').css('width', '960px');				
+				$('canvas').css('height', '768px');
+				$('.canvas-container').css('width', '960px');
+				$('.canvas-container').css('height', '768px');
 			break;			
 			case '5':
-				$('#image-container').css('width', '980px');				
-				$('#image-container').css('height', '770px');
+				$('canvas').css('width', '980px');				
+				$('canvas').css('height', '770px');
+				$('.canvas-container').css('width', '980px');
+				$('.canvas-container').css('height', '770px');
 			break;
 			case '6':
-				$('#image-container').css('width', '1050px');				
-				$('#image-container').css('height', '750px');
+				$('canvas').css('width', '1050px');				
+				$('canvas').css('height', '750px');
+				$('.canvas-container').css('width', '1050px');
+				$('.canvas-container').css('height', '750px');
 			break;
 		}
+		updateText();
+		updateTitle();
 	});
 
+	//	Purpose: Changes filter when user selects new filter.
+	//	PreCondition: User selects new filter.
+	//	PostCondition: Applies new filter to Image canvas.
 	$('#filterSelect').change(function() {
 		$('.property-container').hide();
 		applyOriginal();
@@ -100,169 +262,129 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#reset').click(function() {
-		$('.progress-bar').css('width', '0%');
-	});
+	//	Purpose: Hides custom filter properties onload.
+	$('.property-container').hide();
 });
 
-image = document.getElementById('image');
-
-function applyOriginal()
+//	Purpose: Sets the resolution of the text and title canvas'.
+//	PreCondition: None.
+//	PostCondition: Text and Title canvas' will have resolution adjusted to proper size setting selected by user.
+function setCanvasResolution()
 {
-    image.style.filter = '';
-    image.style.webkitFilter = '';
+    switch($('#sizeSelect option:selected').val()) {
+        case '1':
+            canvasTitle.width = canvasText.width = 540;
+            canvasTitle.height = canvasText.height = 360;
+        break;
+        case '2':
+            canvasTitle.width = canvasText.width = 546;
+            canvasTitle.width = canvasText.width = 390;
+        break;          
+        case '3':
+            canvasTitle.width = canvasText.width = 640;
+            canvasTitle.width = canvasText.width = 480;
+        break;
+        case '4':
+            canvasTitle.width = canvasText.width = 960;
+            canvasTitle.width = canvasText.width = 768;
+        break;          
+        case '5':
+            canvasTitle.width = canvasText.width = 980;
+            canvasTitle.width = canvasText.width = 770;
+        break;
+        case '6':
+            canvasTitle.width = canvasText.width = 1050;
+            canvasTitle.width = canvasText.width = 750;
+        break;
+    }
 }
 
-function applyNostalgia() 
-{   
-    var filter = 'saturate(40%) grayscale(100%) contrast(45%) sepia(100%)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-};
-
-function applyGrayscale() 
-{   
-    var filter = 'grayscale(100%)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-};
-
-function applyXPro2() 
+//	Purpose: Redraws an updated title to title canvas.
+//	PreCondition: None. 
+//	PostCondition: Updated title will be draw to title canvas.
+function updateTitle()
 {
-    var filter = 'contrast(1.3) brightness(0.8) sepia(0.3) saturate(1.5) hue-rotate(-20deg)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
+	clearTitle();
+	addTitle();
 }
 
-function applyWillow()
+//	Purpose: Sets updated specifcations for title.
+//	PreCondition: None.
+//	PostCondition: Specification for title will be updated and is ready to be redrawn.
+function addTitle()
 {
-    var filter = 'saturate(0.02) contrast(0.85) brightness(1.2) sepia(0.02)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
+    cardTitle.setCanvasText($('#title').val(),
+                            $('#title-font').val(),
+                            $('#title-font-size').val(),
+                            $('#title-color').val(),
+                            cardTitle.x,
+                            cardTitle.y);
+    drawTitle();
 }
 
-function applyWalden()
+//	Purpose: Draws title to canvas.
+//	PreCondition: None.
+//	PostCondition: Draws title to canvas.
+function drawTitle()
 {
-    var filter = 'sepia(0.35) contrast(0.9) brightness(1.1) hue-rotate(-10deg) saturate(1.5)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
+    ctxTitle.font = cardTitle.fontSize + ' ' + cardTitle.font;
+    ctxTitle.fillStyle = cardTitle.color;
+    ctxTitle.fillText(cardTitle.text, cardTitle.x, cardTitle.y);    
 }
 
-function applyValencia()
+//	Purpose: Redraws an updated text to text canvas.
+//	PreCondition: None. 
+//	PostCondition: Updated text will be draw to text canvas.
+function updateText()
 {
-    var filter = 'sepia(0.15) saturate(1.5) contrast(0.9)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
+	clearText();
+	addText();
 }
 
-function applyToaster()
+//	Purpose: Sets updated specifcations for text.
+//	PreCondition: None.
+//	PostCondition: Specification for text will be updated and is ready to be redrawn.
+function addText()
 {
-    var filter = 'sepia(0.4) saturate(2.5) hue-rotate(-30deg) contrast(0.67)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
+    cardText.setCanvasText($('#text').val(),
+							$('#text-font').val(),
+							$('#text-font-size').val(),
+							$('#text-color').val(),
+							cardText.x,
+							cardText.y);
+    drawText();
 }
 
-function applySutro()
+//	Purpose: Draws text to canvas.
+//	PreCondition: None.
+//	PostCondition: Draws text to canvas.
+function drawText()
 {
-    var filter = 'brightness(0.75) contrast(1.3) sepia(0.5) hue-rotate(-25deg)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
+    ctxText.font = cardText.fontSize + ' ' + cardText.font;
+    ctxText.fillStyle = cardText.color;
+    ctxText.fillText(cardText.text, cardText.x, cardText.y);    
 }
 
-function applySierra()
+//	Purpose: Clears the title canvas.
+//	PreCondition: None.
+//	PostCondition: Title canvas is cleared.
+function clearTitle()
 {
-    var filter = 'contrast(0.8) saturate(1.2) sepia(0.15)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
+	ctxTitle.clearRect(0, 0, canvasTitle.width, canvasTitle.height);
 }
 
-function applyRise()
+//	Purpose: Clears the text canvas.
+//	PreCondition: None.
+//	PostCondition: Text canvas is cleared.
+function clearText()
 {
-    var filter = 'saturate(1.4) sepia(0.25) hue-rotate(-15deg) contrast(0.8) brightness(1.1)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
+    ctxText.clearRect(0, 0, canvasText.width, canvasText.height);
 }
 
-function applyNashVille()
+//	Purpose: Clear image canvas.
+//	PreCondition: None.
+//	PostCondition: Image canvas will be cleared.
+function clearImg()
 {
-    var filter = 'sepia(0.4) saturate(1.5) contrast(0.9) brightness(1.1) hue-rotate(-15deg)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
+    ctxImg.clearRect(0, 0, canvasImg.width, canvasImg.height);
 }
-
-function applyMayfair()
-{
-    var filter = 'saturate(1.4) contrast(1.1)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-}
-
-function applyLoFi() 
-{   
-    var filter = 'contrast(1.4) brightness(0.9) sepia(0.05)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-};
-
-function applyKelvin() 
-{   
-    var filter = 'sepia(0.4) saturate(2.4) brightness(1.3) contrast(1)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-};
-
-function applyInkwell() 
-{   
-    var filter = 'grayscale(1) brightness(1.2) contrast(1.05)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-};
-
-function applyHudson() 
-{   
-    var filter = 'contrast(1.3) sepia(0.3) saturate(1.3) hue-rotate(-10deg) brightness(0.95)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-};
-
-function applyEarlybird() 
-{   
-    var filter = 'sepia(0.4) saturate(1.6) contrast(1.1) brightness(0.9) hue-rotate(-10deg)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-};
-
-function applyHefe() 
-{   
-    var filter = 'contrast(1.2) brightness(0.9) hue-rotate(-10deg)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-};
-
-function applyBrannan() 
-{   
-    var filter = 'sepia(0.5) contrast(1.4)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-};
-
-function applyAmaro() 
-{   
-    var filter = 'hue-rotate(-10deg) contrast(0.9) brightness(1.1) saturate(1.5)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-};
-
-function apply1977() 
-{   
-    var filter = 'sepia(0.5) hue-rotate(-30deg) saturate(1.2) contrast(0.8)';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-};
-
-function revertToOriginal() 
-{   
-    var filter = '';
-    image.style.filter = filter;
-    image.style.webkitFilter = filter;
-};
